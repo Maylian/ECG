@@ -130,7 +130,8 @@ public class PARA_SPO2 {
                 break;
             case 0x33:
                 this.spo2wavedata = ((byte)(list.get(4))&0xff);
-                System.out.print(" "+spo2wavedata);
+                System.out.print(" s "+spo2wavedata);
+                this.inputfile(spo2wavedata);
                 ConstantValue.spo2_flag = 2;
                 break;
             default:

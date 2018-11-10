@@ -29,8 +29,8 @@ public class Surface extends JPanel implements Runnable{
     private int m_ptArrayIndex = 0;
 
     private Rectangle graphOutlineRect = new Rectangle();//构造一个新的 Rectangle，其左上角的坐标为 (0,0)，宽度和高度均为 0。
-    public List<Float> m_wavePointArray = new ArrayList<Float>(128);//构造一个具有指定初始容量的空列表//存点
-    public float data[] = new float[5]; //接收的数据
+    public List<Float> m_wavePointArray = new ArrayList<Float>(60);//构造一个具有指定初始容量的空列表//存点
+    public float data[] = new float[60]; //接收的数据
     private boolean m_drawstutas = false;
 
     private boolean m_havedata = false;
@@ -167,7 +167,7 @@ public class Surface extends JPanel implements Runnable{
                     if (pts[k] != pts[k + 1]) {
                         m_big.drawLine(j, pts[k], j - 1, pts[k + 1]);//画线段 x1:(j,pts[k]) x2:(j-1,pts[k+1])
                     } else {
-                        m_big.fillRect(j, pts[k], 1, 1); //画的线的粗细并用前景色填充
+                        m_big.fillRect(j, pts[k], 2, 2); //画的线的粗细并用前景色填充
                     }
                 }
             }
@@ -184,11 +184,11 @@ public class Surface extends JPanel implements Runnable{
             }
         }
 
-        if (m_ptArrayIndex >= 4) { //127
+        if (m_ptArrayIndex >= 59) { //127
             m_ptArrayIndex = 0;
             //m_drawstutas = false;
             //m_havedata = false;
-            for (int _inx1 = 0; _inx1 < 5; _inx1++) {  //128
+            for (int _inx1 = 0; _inx1 < 60; _inx1++) {  //128
                 this.data[_inx1] = 0;
             }
             // m_drawstutas1 = true;

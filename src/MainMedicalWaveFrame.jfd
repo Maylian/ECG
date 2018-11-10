@@ -7,7 +7,7 @@ new FormModel {
 			name: "this"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1InfoDisplay"
-				"background": new java.awt.Color( 0, 0, 0, 255 )
+				"background": sfield java.awt.Color black
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
 					name: "ECGwavePanel1"
 					"background": new java.awt.Color( 0, 0, 0, 255 )
@@ -15,7 +15,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
 					"y": 45
-					"height": 180
+					"height": 185
 					"width": 760
 				} )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
@@ -24,7 +24,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   I", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 225
+					"y": 230
 					"width": 760
 					"height": 185
 				} )
@@ -34,7 +34,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  PLETH", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color cyan )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 410
+					"y": 415
 					"width": 760
 					"height": 185
 				} )
@@ -334,7 +334,7 @@ new FormModel {
 						"height": 130
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
+					"x": 760
 					"y": 205
 					"width": 340
 					"height": 180
@@ -434,7 +434,7 @@ new FormModel {
 						"y": 45
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
+					"x": 760
 					"y": 385
 					"width": 340
 					"height": 120
@@ -478,7 +478,7 @@ new FormModel {
 						"y": 40
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
+					"x": 760
 					"y": 505
 					"width": 340
 					"height": 105
@@ -620,7 +620,7 @@ new FormModel {
 						"y": 100
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
+					"x": 760
 					"y": 610
 					"width": 340
 					"height": 145
@@ -630,17 +630,17 @@ new FormModel {
 					"background": new java.awt.Color( 0, 0, 0, 255 )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "warningText"
-						"background": new java.awt.Color( 255, 255, 0, 255 )
+						"background": sfield java.awt.Color darkGray
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 575
+						"x": 695
 						"y": 5
-						"width": 260
+						"width": 140
 						"height": 35
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
 					"y": 0
-					"width": 1130
+					"width": 1115
 					"height": 45
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {

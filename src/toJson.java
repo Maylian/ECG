@@ -1,8 +1,10 @@
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class toJson {
 
-    public void tojson(byte[] msg) //throws Exception  //String IP 主机IP
+    public void tojson(ArrayList msg) //throws Exception  //String IP 主机IP
     {
         JSONObject jsonObject = new JSONObject();
 

@@ -11,7 +11,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../JAR包/json-20171018.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../JAR包/RXTXcomm.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -20,7 +20,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../JAR包/RXTXcomm.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../JAR包/json-20171018.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

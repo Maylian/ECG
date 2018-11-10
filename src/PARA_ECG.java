@@ -128,7 +128,7 @@ public class PARA_ECG {
                 break;
             case 0x33:
                 this.HR = (short) ((((byte)list.get(5)&0xFF) << 8) | ((byte)list.get(4)&0xFF));
-                System.out.println("  心率 = "+HR);
+            //    System.out.println("  心率 = "+HR);
                 ConstantValue.ecg_flag = 2;
                 break;
             case 0x3F:

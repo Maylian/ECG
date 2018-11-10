@@ -110,21 +110,21 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             ECGwavePanel1.setBorder(new TitledBorder(new EtchedBorder(), "   II", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel1);
-            ECGwavePanel1.setBounds(0, 45, 760, 180);
+            ECGwavePanel1.setBounds(0, 45, 760, 185);
 
             //---- ECGwavePanel2 ----
             ECGwavePanel2.setBackground(Color.black);
             ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel2);
-            ECGwavePanel2.setBounds(0, 225, 760, 185);
+            ECGwavePanel2.setBounds(0, 230, 760, 185);
 
             //---- Spo2WavePanel ----
             Spo2WavePanel.setBackground(Color.black);
             Spo2WavePanel.setBorder(new TitledBorder(new EtchedBorder(), "  PLETH", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.cyan));
             panel1InfoDisplay.add(Spo2WavePanel);
-            Spo2WavePanel.setBounds(0, 410, 760, 185);
+            Spo2WavePanel.setBounds(0, 415, 760, 185);
 
             //---- RESPwavePanel ----
             RESPwavePanel.setBackground(Color.black);
@@ -379,7 +379,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(NIBPdataPanel);
-            NIBPdataPanel.setBounds(765, 205, 340, 180);
+            NIBPdataPanel.setBounds(760, 205, 340, 180);
 
             //======== SPO2dataPanel ========
             {
@@ -461,7 +461,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(SPO2dataPanel);
-            SPO2dataPanel.setBounds(765, 385, 340, 120);
+            SPO2dataPanel.setBounds(760, 385, 340, 120);
 
             //======== RESPdataPanel ========
             {
@@ -507,7 +507,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(RESPdataPanel);
-            RESPdataPanel.setBounds(765, 505, 340, 105);
+            RESPdataPanel.setBounds(760, 505, 340, 105);
 
             //======== panel3 ========
             {
@@ -615,7 +615,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel3);
-            panel3.setBounds(765, 610, 340, 145);
+            panel3.setBounds(760, 610, 340, 145);
 
             //======== panel2 ========
             {
@@ -623,9 +623,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 panel2.setLayout(null);
 
                 //---- warningText ----
-                warningText.setBackground(Color.yellow);
+                warningText.setBackground(Color.darkGray);
                 panel2.add(warningText);
-                warningText.setBounds(575, 5, 260, 35);
+                warningText.setBounds(695, 5, 140, 35);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -642,7 +642,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel2);
-            panel2.setBounds(0, 0, 1130, 45);
+            panel2.setBounds(0, 0, 1115, 45);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -744,7 +744,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public void setRESPwavedata(int data2)
     {
-      //  this.RESPwavePanel;
+        this.RESPwavePanel.putRESP(data2);
         this.SetAllText();
     }
 
@@ -798,7 +798,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //TEMP
         t2.setText(String.valueOf(bt1));
         t4.setText(String.valueOf(bt2));
-        System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+    //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
     }
 
     public void run()

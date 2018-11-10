@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -15,9 +16,9 @@ public class MedicalWaveDisplayPanel extends JPanel{
 //    private LinkedList<Object> list = new LinkedList<>(); //获取的数据存储的载体
 
     private int i = 0;
-    private int[] SPO2wave = new int[5];
-    private int[] ECGwave = new int[5];
-    private int[] RESPwave = new int[5];
+    private int[] SPO2wave = new int[60];
+    private int[] ECGwave = new int[60];
+    private int[] RESPwave = new int[60];
 
     public MedicalWaveDisplayPanel()
     {
@@ -49,7 +50,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized void putSPO2data(int spo2)
     {
-        while (i == 5)
+        while (i == 60)
         {
             i = 0;
             this.SetSpo2WaveData(SPO2wave);
@@ -59,7 +60,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putECGdata(int ecg)
     {
-        while (i == 5)
+        while (i == 60)
         {
             i = 0;
             this.SetECG_WaveData(ECGwave);
@@ -68,7 +69,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putRESP(int resp)
     {
-        while (i == 5)
+        while (i == 60)
         {
             i = 0;
             this.SetRESPWaveData(RESPwave);
@@ -79,7 +80,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     public synchronized int SetECG_WaveData(int[] data)//MedicalWaveFrame调用
     {
         float _fMax = 200.0f;
-        float _fMin = 90.0f;
+        float _fMin = -190.0f;
         float _fNormalize = _fMax-_fMin;
 
         float _f = 0.0f;
@@ -107,7 +108,10 @@ public class MedicalWaveDisplayPanel extends JPanel{
     public synchronized int SetSpo2WaveData(int[] data0)
     {
 
-        float Max = 200.0f;
+      //  float Min = Arrays.stream(data0).min().getAsInt();
+     //   float Max = Arrays.stream(data0).max().getAsInt();
+
+        float Max = 227.0f;
         float Min = 10.0f;
         float Mid = Max - Min;
         float f = 0.0f;
@@ -119,7 +123,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
         for(int i = 0;i < data0.length; i++)
         {
-            f = (data0[i] - Min)/Mid;
+         //   f = (data0[i] - Min)/Mid;
+             f = (Max - data0[i])/Mid;
             this.surf.data[i] = f;
         }
 
@@ -144,11 +149,15 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized int SetRESPWaveData(int[] data0)
     {
-        float Max = 195.0f;
-        float Min = 96.0f;
+
+      //  float Min = Arrays.stream(data0).min().getAsInt();
+      //  float Max = Arrays.stream(data0).max().getAsInt();
+
+        float Max = 250.0f;
+        float Min = 10.0f;
         float Mid = Max - Min;
         float f = 0.0f;
-        System.out.println("resp data push");
+    //    System.out.println("resp data push");
         while(m_pls.hasValue == true)
         {
             System.out.println("Panel await();");

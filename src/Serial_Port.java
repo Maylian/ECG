@@ -126,8 +126,8 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                     while (inputStream.available() > 0)
                     {
                         numBytes = inputStream.read(readBuffer);
-                    //    Parameter parameter = new Parameter(readBuffer);
-
+                        for(int k = 0; k < numBytes; k++)
+                            list.add(readBuffer[k]);
 
                         int SPO2_data;
                         //   int[] ECG_data = new int[64];
@@ -224,16 +224,25 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                 switch (ConstantValue.ecg_flag)
                 {
                     case 1:
-                        list.subList(0, 13).clear();
+                        try {
+                            list.subList(0, 13).clear();
+                        } catch (Exception e) {
+                            System.out.println("--------ECG case1 错误");
+                        }
                         break;
                     case 2:
-                        list.subList(0, 7).clear();
+                        try {
+                            list.subList(0, 7).clear();
+                        } catch (Exception e) {
+                            System.out.println("--------ECG case2 错误");
+                        }
                         break;
                     case 4:
                         try {
                             list.subList(0, 21).clear();
                         } catch (Exception e) {
-                            System.out.println("ECG_case4错误");
+                            list.clear();
+                            System.out.println("--------ECG case4 错误");
                             //e.printStackTrace();
                         }
                         break;
@@ -241,7 +250,8 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                         try {
                             list.subList(0,((byte)list.get(1)+2)).clear();
                         } catch (Exception e) {
-                            System.out.println("ECG_case5错误");
+                            list.clear();
+                            System.out.println("--------ECG case5 错误");
                             //  e.printStackTrace();
                         }
                         break;
@@ -252,16 +262,32 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                 switch (ConstantValue.resp_flag)
                 {
                     case 1:
-                        list.subList(0, 7).clear();
+                        try {
+                            list.subList(0, 7).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------RESP case1 错误");
+                        }
                         break;
                     case 2:
-                        list.subList(0, 7).clear();
+                        try {
+                            list.subList(0, 7).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------RESP case2 错误");
+                        }
                         break;
                     case 3:
-                        list.subList(0,((byte)list.get(1)+2)).clear();
+                        try {
+                            list.subList(0,((byte)list.get(1)+2)).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------RESP case3 错误");
+                        }
                         break;
                 }
                 break;
+            //TEMP
             case 3:
                 switch (ConstantValue.temp_flag)
                 {
@@ -279,14 +305,29 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                 {
                     case 1:
                         //    list.removeRange(0,11);
-                        list.subList(0, 11).clear();
+                        try {
+                            list.subList(0, 11).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------SPO2 case1 错误");
+                        }
                         break;
                     case 2:
                         //    list.removeRange(0,7);
-                        list.subList(0, 7).clear();
+                        try {
+                            list.subList(0, 7).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------SPO2 case2 错误");
+                        }
                         break;
                     case 3:
-                        list.subList(0,((byte)list.get(1)+2)).clear();
+                        try {
+                            list.subList(0,((byte)list.get(1)+2)).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------SPO2 case3 错误");
+                        }
                         break;
                 }
                 break;
@@ -313,7 +354,8 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             }
                             list.subList(0,((byte)list.get(1)+2)).clear();
                         } catch (Exception e) {
-                            System.out.println("NIBP错误");
+                            list.clear();
+                            System.out.println("--------NIBP错误");
                             // e.printStackTrace();
                         }
                         break;
@@ -321,6 +363,13 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                 break;
             //不完善的数据
             case 6:
+
+               /* if (list.size() < ((byte)list.get(1)+2))
+                {
+                    list.clear();
+                    break;
+                }
+                list.subList(0,((byte)list.get(1)+2)).clear();*/
                 //debug后增加完善
                 try {
                     if (list.size() < ((byte)list.get(1)+2))
@@ -330,6 +379,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                     }
                     list.subList(0,((byte)list.get(1)+2)).clear();
                 } catch (Exception e) {
+                    list.clear();
                     System.out.println("不完善数据错误");
                     //   e.printStackTrace();
                 }
