@@ -16,9 +16,9 @@ public class MedicalWaveDisplayPanel extends JPanel{
 //    private LinkedList<Object> list = new LinkedList<>(); //获取的数据存储的载体
 
     private int i = 0;
-    private int[] SPO2wave = new int[60];
-    private int[] ECGwave = new int[60];
-    private int[] RESPwave = new int[60];
+    private int[] SPO2wave = new int[30];
+    private int[] ECGwave = new int[30];
+    private int[] RESPwave = new int[30];
 
     public MedicalWaveDisplayPanel()
     {
@@ -50,7 +50,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized void putSPO2data(int spo2)
     {
-        while (i == 60)
+        while (i == 30)
         {
             i = 0;
             this.SetSpo2WaveData(SPO2wave);
@@ -60,7 +60,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putECGdata(int ecg)
     {
-        while (i == 60)
+        while (i == 30)
         {
             i = 0;
             this.SetECG_WaveData(ECGwave);
@@ -69,7 +69,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putRESP(int resp)
     {
-        while (i == 60)
+        while (i == 30)
         {
             i = 0;
             this.SetRESPWaveData(RESPwave);
