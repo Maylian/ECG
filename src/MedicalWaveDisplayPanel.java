@@ -16,9 +16,9 @@ public class MedicalWaveDisplayPanel extends JPanel{
 //    private LinkedList<Object> list = new LinkedList<>(); //获取的数据存储的载体
 
     private int i = 0;
-    private int[] SPO2wave = new int[30];
-    private int[] ECGwave = new int[30];
-    private int[] RESPwave = new int[30];
+    private int[] SPO2wave = new int[15];
+    private int[] ECGwave = new int[15];
+    private int[] RESPwave = new int[15];
 
     public MedicalWaveDisplayPanel()
     {
@@ -50,7 +50,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized void putSPO2data(int spo2)
     {
-        while (i == 30)
+        while (i == 15)
         {
             i = 0;
             this.SetSpo2WaveData(SPO2wave);
@@ -60,7 +60,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putECGdata(int ecg)
     {
-        while (i == 30)
+        while (i == 15)
         {
             i = 0;
             this.SetECG_WaveData(ECGwave);
@@ -69,7 +69,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putRESP(int resp)
     {
-        while (i == 30)
+        while (i == 15)
         {
             i = 0;
             this.SetRESPWaveData(RESPwave);
@@ -79,8 +79,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized int SetECG_WaveData(int[] data)//MedicalWaveFrame调用
     {
-        float _fMax = 200.0f;
-        float _fMin = -190.0f;
+        float _fMax = 600.0f;
+        float _fMin = -350.0f;
         float _fNormalize = _fMax-_fMin;
 
         float _f = 0.0f;
@@ -111,7 +111,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
       //  float Min = Arrays.stream(data0).min().getAsInt();
      //   float Max = Arrays.stream(data0).max().getAsInt();
 
-        float Max = 227.0f;
+        float Max = 260.0f;
         float Min = 10.0f;
         float Mid = Max - Min;
         float f = 0.0f;

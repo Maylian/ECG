@@ -31,8 +31,8 @@ public class Surface extends JPanel implements Runnable{
 
     private Rectangle graphOutlineRect = new Rectangle();//构造一个新的 Rectangle，其左上角的坐标为 (0,0)，宽度和高度均为 0。
     public List<Float> m_wavePointArray = new ArrayList<Float>(30);//构造一个具有指定初始容量的空列表//存点
-    public float data[] = new float[30]; //接收的数据
-    public float spo2_data[] = new float[10];
+    public float data[] = new float[15]; //接收的数据
+    public float spo2_data[] = new float[20];
     private boolean m_drawstutas = false;
 
     private boolean m_havedata = false;
@@ -128,10 +128,10 @@ public class Surface extends JPanel implements Runnable{
         m_drawstutas = true;
 
         float _fPtsV = this.data[m_ptArrayIndex];  //初值为0
-      //  float _sfPtsV = this.spo2_data[m_sptArrayIndex];
+    //    float _sfPtsV = this.spo2_data[m_sptArrayIndex];
 
         _fPtsV = 1 - _fPtsV;
-   //     _sfPtsV = 1 - _sfPtsV;
+    //    _sfPtsV = 1 - _sfPtsV;
         if (pts == null) {
             pts = new int[graphW];
             ptNum = 0;
@@ -163,7 +163,7 @@ public class Surface extends JPanel implements Runnable{
 
             m_big.setColor(Color.YELLOW);//波形曲线的颜色
             pts[ptNum] = (int) (graphY + graphH * _fPtsV);
-        //    pts[ptNum] = (int) (graphY + graphH * _sfPtsV);
+         //   pts[ptNum] = (int) (graphY + graphH * _sfPtsV);
 
             this.m_graphH = graphH;
 
@@ -189,11 +189,11 @@ public class Surface extends JPanel implements Runnable{
             }
         }
 
-        if (m_ptArrayIndex >= 29) { //127
+        if (m_ptArrayIndex >= 14) { //127
             m_ptArrayIndex = 0;
             //m_drawstutas = false;
             //m_havedata = false;
-            for (int _inx1 = 0; _inx1 < 30; _inx1++) {  //128
+            for (int _inx1 = 0; _inx1 < 15; _inx1++) {  //128
                 this.data[_inx1] = 0;
             }
             // m_drawstutas1 = true;
@@ -203,6 +203,19 @@ public class Surface extends JPanel implements Runnable{
             m_ptArrayIndex++;
         }
 
+        /*if (m_sptArrayIndex >= 19) { //127
+            m_sptArrayIndex = 0;
+            //m_drawstutas = false;
+            //m_havedata = false;
+            for (int _inx2 = 0; _inx2 < 20; _inx2++) {  //128
+                this.spo2_data[_inx2] = 0;
+            }
+            // m_drawstutas1 = true;
+            m_pls.SetHasValue(false);
+            m_pls.signal();
+        } else {
+            m_sptArrayIndex++;
+        }*/
 
         g.drawImage(m_bimg, 0, 0, this);//direct curve to background, do not erase the background...
         System.out.println();

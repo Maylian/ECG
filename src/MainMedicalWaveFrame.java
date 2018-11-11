@@ -19,7 +19,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi,t1_stamsg,t2_stamsg;
     public double bt1,bt2;
-    public short hr;
+    public int hr;
 
 
 
@@ -65,6 +65,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         n9 = new JLabel();
         n10 = new JLabel();
         panel1 = new JPanel();
+        panel1.setVisible(false);
         l1 = new JLabel();
         l2 = new JLabel();
         SPO2dataPanel = new JPanel();
