@@ -29,9 +29,9 @@ public class PARA_SPO2 {
     private byte SPR_Length; //血氧脉率帧长
     private byte SPW_Length; //血氧波形帧长
 
-    private static int SPO2_data[] = new int[20];
-    private int SPO2_WAVE[] = new int[20]; //SPO2波形数据
-    private int spo2wavedata;
+    private int SPO2_WAVE[] = new int[20];
+    private int spo2wavedata; //SPO2波形数据
+    private short spo2_Bar; //棒图数据
 
 
 
@@ -56,6 +56,10 @@ public class PARA_SPO2 {
     public int getSpo2wavedata()
     {
         return spo2wavedata;
+    }
+    public short getSpo2_Bar()
+    {
+        return spo2_Bar;
     }
 
 
@@ -130,8 +134,9 @@ public class PARA_SPO2 {
                 break;
             case 0x33:
                 this.spo2wavedata = ((byte)(list.get(4))&0xff);
+                this.spo2_Bar = (short)((byte)(list.get(5))&0x1F);
             //    System.out.print(" s "+spo2wavedata);
-                this.inputfile(spo2wavedata);
+             //   this.inputfile(spo2wavedata);
                 ConstantValue.spo2_flag = 2;
                 break;
             default:
